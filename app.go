@@ -28,8 +28,7 @@ func main() {
 	r.POST("/posts", CreatePost)
 	r.DELETE("/posts/:id", DeletePost)
 
-	r.GET("/posts/example", CreateExamplePost)
+	r.POST("/posts/:id/comments", CreateComment)
 
 	r.Run()
-
 }

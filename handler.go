@@ -75,6 +75,36 @@ func DeletePost(c *gin.Context) {
 	c.JSON(200, result)
 }
 
-func CreateExamplePost(c *gin.Context) {
-	c.JSON(201, gin.H{"message": "Post created successfully!"})
+func CreateComment(c *gin.Context) {
+	id, _ := primitive.ObjectIDFromHex(c.Param("id"))
+
+	filter := bson.M{"_id": id}
+
+	var post Post
+	err := PostsCollection.FindOne(context.Background(), filter).Decode(&post)
+	if err != nil {
+		c.JSON(404, gin.H{"message": "Post not found"})
+		return
+	}
+
+	var comment Comment
+	err = c.BindJSON(&comment)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	comment.CommentID = primitive.NewObjectID().Hex()
+
+	post.Comments = append(post.Comments, comment)
+
+	update := bson.M{
+		"$set": bson.M{"comments": post.Comments},
+	}
+
+	result, err := PostsCollection.UpdateOne(context.Background(), filter, update)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	c.JSON(200, result)
 }

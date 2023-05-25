@@ -2,7 +2,7 @@ package main
 
 // Post represents a blog post
 type Post struct {
-	ID       string    `bson:"_id,omitempty" json:"id,omitempty"`
+	ID       string    `bson:"_id,omitempty" json:"id"`
 	Title    string    `bson:"title" json:"title"`
 	Content  string    `bson:"content" json:"content"`
 	Author   string    `bson:"author" json:"author"`
@@ -11,7 +11,7 @@ type Post struct {
 
 // Comment represents a comment on a blog post
 type Comment struct {
-	CommentID int    `bson:"commentId" json:"commentId"`
+	CommentID string `bson:"_id,omitempty" json:"id"`
 	Text      string `bson:"text" json:"text"`
 	Author    string `bson:"author" json:"author"`
 }
