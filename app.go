@@ -1,15 +1,10 @@
 package main
 
 import (
-	"context"
-	"fmt"
 	"log"
-	"os"
 
+	"github.com/gin-gonic/gin"
 	"github.com/joho/godotenv"
-	"go.mongodb.org/mongo-driver/bson"
-	"go.mongodb.org/mongo-driver/mongo"
-	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
 func main() {
@@ -18,14 +13,17 @@ func main() {
 		log.Fatal("Error loading .env file")
 	}
 
-	fmt.Println(os.Getenv("DBURL"))
+	InitDB()
 
-	client, err := mongo.Connect(context.TODO(), options.Client().ApplyURI(os.Getenv("DBURL")))
-	if err != nil {
-		panic(err)
-	}
+	r := gin.Default()
 
-	postsCollection := client.Database("mongoblog").Collection("posts")
+	r.GET("/", func(c *gin.Context) {
+		c.JSON(200, gin.H{
+			"message": "Hello World!",
+		})
+	})
+
+	r.Run()
 
 	// post := Post{
 	// 	Title:   "Sample Blog Post",
@@ -53,40 +51,40 @@ func main() {
 
 	// fmt.Println("Example post inserted successfully!")
 
-	cursor, err := postsCollection.Find(context.Background(), bson.D{})
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer cursor.Close(context.Background())
+	// cursor, err := PostsCollection.Find(context.Background(), bson.D{})
+	// if err != nil {
+	// 	log.Fatal(err)
+	// }
+	// defer cursor.Close(context.Background())
 
-	// Iterate over the cursor and decode each document into a Post struct
-	var posts []Post
-	for cursor.Next(context.Background()) {
-		var post Post
-		err := cursor.Decode(&post)
-		if err != nil {
-			log.Fatal(err)
-		}
-		posts = append(posts, post)
-	}
+	// // Iterate over the cursor and decode each document into a Post struct
+	// var posts []Post
+	// for cursor.Next(context.Background()) {
+	// 	var post Post
+	// 	err := cursor.Decode(&post)
+	// 	if err != nil {
+	// 		log.Fatal(err)
+	// 	}
+	// 	posts = append(posts, post)
+	// }
 
-	// Check for any errors during cursor iteration
-	if err := cursor.Err(); err != nil {
-		log.Fatal(err)
-	}
+	// // Check for any errors during cursor iteration
+	// if err := cursor.Err(); err != nil {
+	// 	log.Fatal(err)
+	// }
 
-	// Print the retrieved posts
-	for _, post := range posts {
-		fmt.Printf("Post ID: %s\n", post.ID)
-		fmt.Printf("Title: %s\n", post.Title)
-		fmt.Printf("Content: %s\n", post.Content)
-		fmt.Printf("Author: %s\n", post.Author)
-		fmt.Println("Comments:")
-		for _, comment := range post.Comments {
-			fmt.Printf("- Comment ID: %d\n", comment.CommentID)
-			fmt.Printf("  Text: %s\n", comment.Text)
-			fmt.Printf("  Author: %s\n", comment.Author)
-		}
-		fmt.Println("------")
-	}
+	// // Print the retrieved posts
+	// for _, post := range posts {
+	// 	fmt.Printf("Post ID: %s\n", post.ID)
+	// 	fmt.Printf("Title: %s\n", post.Title)
+	// 	fmt.Printf("Content: %s\n", post.Content)
+	// 	fmt.Printf("Author: %s\n", post.Author)
+	// 	fmt.Println("Comments:")
+	// 	for _, comment := range post.Comments {
+	// 		fmt.Printf("- Comment ID: %d\n", comment.CommentID)
+	// 		fmt.Printf("  Text: %s\n", comment.Text)
+	// 		fmt.Printf("  Author: %s\n", comment.Author)
+	// 	}
+	// 	fmt.Println("------")
+	// }
 }
