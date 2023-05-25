@@ -47,6 +47,21 @@ func GetPostByID(c *gin.Context) {
 	c.JSON(200, post)
 }
 
+func CreatePost(c *gin.Context) {
+	var post Post
+	err := c.BindJSON(&post)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	result, err := PostsCollection.InsertOne(context.Background(), post)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	c.JSON(201, result)
+}
+
 func CreateExamplePost(c *gin.Context) {
 	c.JSON(201, gin.H{"message": "Post created successfully!"})
 }
