@@ -6,6 +6,7 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"go.mongodb.org/mongo-driver/bson"
+	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
 func GetAllPosts(c *gin.Context) {
@@ -30,6 +31,20 @@ func GetAllPosts(c *gin.Context) {
 	}
 
 	c.JSON(200, posts)
+}
+
+func GetPostByID(c *gin.Context) {
+	id, _ := primitive.ObjectIDFromHex(c.Param("id"))
+
+	filter := bson.M{"_id": id}
+
+	var post Post
+	err := PostsCollection.FindOne(context.Background(), filter).Decode(&post)
+	if err != nil {
+		c.JSON(404, gin.H{"message": "Post not found"})
+		return
+	}
+	c.JSON(200, post)
 }
 
 func CreateExamplePost(c *gin.Context) {

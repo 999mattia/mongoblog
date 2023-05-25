@@ -23,6 +23,8 @@ func main() {
 		})
 	})
 
+	r.GET("/posts/:id", GetPostByID)
+
 	r.GET("/posts", GetAllPosts)
 
 	r.GET("/posts/example", CreateExamplePost)
