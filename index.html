@@ -7,66 +7,84 @@
 		<h1>Posts</h1>
 		<div id="posts-container"></div>
 
-		<!-- <script>
-			// Function to fetch and display all posts
-			function fetchPosts() {
-				fetch("https://example.com/posts") // Replace with your API endpoint URL
-					.then((response) => response.json())
-					.then((posts) => {
-						const postsContainer =
-							document.getElementById("posts-container");
+		<script>
+			// Function to fetch all posts
+			async function fetchPosts() {
+				try {
+					const response = await fetch("/api/posts");
+					const posts = await response.json();
 
-						// Clear previous content
-						postsContainer.innerHTML = "";
+					const postsContainer =
+						document.getElementById("posts-container");
+					postsContainer.innerHTML = "";
 
-						// Display each post
-						posts.forEach((post) => {
-							const postDiv = document.createElement("div");
-							postDiv.classList.add("post");
+					posts.forEach((post) => {
+						const postDiv = document.createElement("div");
+						postDiv.classList.add("post");
 
-							const title = document.createElement("h2");
-							title.textContent = post.title;
+						const title = document.createElement("h2");
+						title.textContent = post.title;
 
-							const content = document.createElement("p");
-							content.textContent = post.content;
+						const content = document.createElement("p");
+						content.textContent = post.content;
 
-							const deleteButton =
-								document.createElement("button");
-							deleteButton.textContent = "Delete";
-							deleteButton.addEventListener("click", () =>
-								deletePost(post.id)
-							);
+						const author = document.createElement("p");
+						content.textContent = post.author;
 
-							postDiv.appendChild(title);
-							postDiv.appendChild(content);
-							postDiv.appendChild(deleteButton);
+						// const deleteButton = document.createElement("button");
+						// deleteButton.textContent = "Delete";
+						// deleteButton.addEventListener("click", () =>
+						// 	deletePost(post.id)
+						// );
 
-							postsContainer.appendChild(postDiv);
+						postDiv.appendChild(title);
+						postDiv.appendChild(content);
+						// postDiv.appendChild(deleteButton);
+
+						const comments = document.createElement("div");
+
+						post.comments.forEach((comment) => {
+							const commentDiv = document.createElement("div");
+							commentDiv.classList.add("comment");
+
+							const commentAuthor = document.createElement("p");
+							commentAuthor.textContent = comment.author;
+
+							const commentText = document.createElement("p");
+							commentText.textContent = comment.text;
+
+							commentDiv.appendChild(commentAuthor);
+							commentDiv.appendChild(commentText);
+
+							comments.appendChild(commentDiv);
 						});
-					})
-					.catch((error) => {
-						console.error("Error:", error);
+
+						postDiv.appendChild(comments);
+
+						postsContainer.appendChild(postDiv);
 					});
+				} catch (error) {
+					console.error("Error:", error);
+				}
 			}
 
-			// Function to delete a post
-			function deletePost(postId) {
-				fetch(`https://example.com/posts/${postId}`, {
-					// Replace with your API endpoint URL
-					method: "DELETE",
-				})
-					.then((response) => response.json())
-					.then((result) => {
-						console.log("Post deleted:", result);
-						fetchPosts(); // Refresh posts after deletion
-					})
-					.catch((error) => {
-						console.error("Error:", error);
-					});
-			}
+			// async function deletePost(postId) {
+			// 	try {
+			// 		const response = await fetch(
+			// 			`https://example.com/posts/${postId}`,
+			// 			{
+			// 				method: "DELETE",
+			// 			}
+			// 		);
+			// 		const result = await response.json();
+			// 		console.log("Post deleted:", result);
+			// 		fetchPosts();
+			// 	} catch (error) {
+			// 		console.error("Error:", error);
+			// 	}
+			// }
 
-			// Fetch and display posts when the page loads
 			fetchPosts();
-		</script> -->
+		</script>
 	</body>
 </html>
