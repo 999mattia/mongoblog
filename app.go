@@ -27,8 +27,6 @@ func main() {
 
 	r.GET("/api/posts/example", CreateExamplePost)
 
-	r.StaticFile("/", "./index.html")
-
 	r.Run()
 
 }
