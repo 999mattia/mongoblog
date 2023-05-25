@@ -108,3 +108,35 @@ func CreateComment(c *gin.Context) {
 
 	c.JSON(200, result)
 }
+
+func DeleteComment(c *gin.Context) {
+	postID, _ := primitive.ObjectIDFromHex(c.Param("id"))
+	commentID := c.Param("commentID")
+
+	filter := bson.M{"_id": postID}
+
+	var post Post
+	err := PostsCollection.FindOne(context.Background(), filter).Decode(&post)
+	if err != nil {
+		c.JSON(404, gin.H{"message": "Post not found"})
+		return
+	}
+
+	var comments []Comment
+	for _, comment := range post.Comments {
+		if comment.CommentID != commentID {
+			comments = append(comments, comment)
+		}
+	}
+
+	update := bson.M{
+		"$set": bson.M{"comments": comments},
+	}
+
+	result, err := PostsCollection.UpdateOne(context.Background(), filter, update)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	c.JSON(200, result)
+}

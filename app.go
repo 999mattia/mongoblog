@@ -29,6 +29,7 @@ func main() {
 	r.DELETE("/posts/:id", DeletePost)
 
 	r.POST("/posts/:id/comments", CreateComment)
+	r.DELETE("/posts/:id/comments/:commentID", DeleteComment)
 
 	r.Run()
 }
