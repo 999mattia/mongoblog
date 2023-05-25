@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Mongoblog</title>
+	</head>
+	<body>
+		<h1>Posts</h1>
+		<div id="posts-container"></div>
+
+		<!-- <script>
+			// Function to fetch and display all posts
+			function fetchPosts() {
+				fetch("https://example.com/posts") // Replace with your API endpoint URL
+					.then((response) => response.json())
+					.then((posts) => {
+						const postsContainer =
+							document.getElementById("posts-container");
+
+						// Clear previous content
+						postsContainer.innerHTML = "";
+
+						// Display each post
+						posts.forEach((post) => {
+							const postDiv = document.createElement("div");
+							postDiv.classList.add("post");
+
+							const title = document.createElement("h2");
+							title.textContent = post.title;
+
+							const content = document.createElement("p");
+							content.textContent = post.content;
+
+							const deleteButton =
+								document.createElement("button");
+							deleteButton.textContent = "Delete";
+							deleteButton.addEventListener("click", () =>
+								deletePost(post.id)
+							);
+
+							postDiv.appendChild(title);
+							postDiv.appendChild(content);
+							postDiv.appendChild(deleteButton);
+
+							postsContainer.appendChild(postDiv);
+						});
+					})
+					.catch((error) => {
+						console.error("Error:", error);
+					});
+			}
+
+			// Function to delete a post
+			function deletePost(postId) {
+				fetch(`https://example.com/posts/${postId}`, {
+					// Replace with your API endpoint URL
+					method: "DELETE",
+				})
+					.then((response) => response.json())
+					.then((result) => {
+						console.log("Post deleted:", result);
+						fetchPosts(); // Refresh posts after deletion
+					})
+					.catch((error) => {
+						console.error("Error:", error);
+					});
+			}
+
+			// Fetch and display posts when the page loads
+			fetchPosts();
+		</script> -->
+	</body>
+</html>

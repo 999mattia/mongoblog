@@ -17,15 +17,17 @@ func main() {
 
 	r := gin.Default()
 
-	r.GET("/", func(c *gin.Context) {
+	r.GET("/api", func(c *gin.Context) {
 		c.JSON(200, gin.H{
 			"message": "Hello World!",
 		})
 	})
 
-	r.GET("/posts", GetAllPosts)
+	r.GET("/api/posts", GetAllPosts)
 
-	r.GET("/posts/example", CreateExamplePost)
+	r.GET("/api/posts/example", CreateExamplePost)
+
+	r.StaticFile("/", "./index.html")
 
 	r.Run()
 
