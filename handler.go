@@ -62,6 +62,19 @@ func CreatePost(c *gin.Context) {
 	c.JSON(201, result)
 }
 
+func DeletePost(c *gin.Context) {
+	id, _ := primitive.ObjectIDFromHex(c.Param("id"))
+
+	filter := bson.M{"_id": id}
+
+	result, err := PostsCollection.DeleteOne(context.Background(), filter)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	c.JSON(200, result)
+}
+
 func CreateExamplePost(c *gin.Context) {
 	c.JSON(201, gin.H{"message": "Post created successfully!"})
 }

@@ -26,6 +26,7 @@ func main() {
 	r.GET("/posts", GetAllPosts)
 	r.GET("/posts/:id", GetPostByID)
 	r.POST("/posts", CreatePost)
+	r.DELETE("/posts/:id", DeletePost)
 
 	r.GET("/posts/example", CreateExamplePost)
 
