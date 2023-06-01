@@ -15,6 +15,9 @@ func main() {
 
 	InitDB()
 
+	CreateExamplePosts()
+	//CleanDB()
+
 	r := gin.Default()
 
 	r.Use(CORS)
