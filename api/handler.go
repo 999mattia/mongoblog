@@ -62,6 +62,29 @@ func CreatePost(c *gin.Context) {
 	c.JSON(201, result)
 }
 
+func UpdatePost(c *gin.Context) {
+	id, _ := primitive.ObjectIDFromHex(c.Param("id"))
+
+	filter := bson.M{"_id": id}
+
+	var post Post
+	err := c.BindJSON(&post)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	update := bson.M{
+		"$set": post,
+	}
+
+	result, err := PostsCollection.UpdateOne(context.Background(), filter, update)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	c.JSON(200, result)
+}
+
 func DeletePost(c *gin.Context) {
 	id, _ := primitive.ObjectIDFromHex(c.Param("id"))
 
