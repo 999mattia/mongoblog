@@ -28,6 +28,7 @@ func main() {
 	r.POST("/posts", CreatePost)
 	r.DELETE("/posts/:id", DeletePost)
 
+	r.GET("/posts/:id/comments/:commentID", GetCommentByID)
 	r.POST("/posts/:id/comments", CreateComment)
 	r.DELETE("/posts/:id/comments/:commentID", DeleteComment)
 
