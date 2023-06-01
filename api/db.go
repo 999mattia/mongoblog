@@ -8,6 +8,7 @@ import (
 	"os"
 
 	"go.mongodb.org/mongo-driver/bson"
+	"go.mongodb.org/mongo-driver/bson/primitive"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
@@ -41,6 +42,7 @@ func CreateExamplePosts() {
 			comment := Comment{
 				Text:   fmt.Sprintf("Comment %d of Post %d", j+1, i+1),
 				Author: fmt.Sprintf("Comment Author %d", j+1),
+				CommentID: primitive.NewObjectID().Hex(),
 			}
 			post.Comments = append(post.Comments, comment)
 		}
