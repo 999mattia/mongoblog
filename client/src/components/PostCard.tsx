@@ -1,4 +1,5 @@
 export default function PostCard(props: any) {
+	let link = "/posts/" + props.post.id;
 	return (
 		<div className="card">
 			<div className="card-body">
@@ -8,7 +9,7 @@ export default function PostCard(props: any) {
 				</h6>
 				<p className="card-text">{props.post.content}</p>
 				<a
-					href="#"
+					href={link}
 					className="card-link"
 				>
 					Read more
