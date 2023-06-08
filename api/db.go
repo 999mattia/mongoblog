@@ -4,7 +4,6 @@ import (
 	"context"
 	"fmt"
 	"log"
-	"math/rand"
 	"os"
 
 	"go.mongodb.org/mongo-driver/bson"
@@ -27,7 +26,7 @@ func InitDB() {
 
 
 func CreateExamplePosts() {
-	numberOfPosts := 100 // Change this value to adjust the number of posts
+	numberOfPosts := 10 // Change this value to adjust the number of posts
 
 	for i := 0; i < numberOfPosts; i++ {
 		post := Post{
@@ -36,7 +35,7 @@ func CreateExamplePosts() {
 			Author:  fmt.Sprintf("Author %d", i+1),
 		}
 
-		numberOfComments := rand.Intn(100) // Random number of comments per post
+		numberOfComments := 10 // Change this value to adjust the number of comments per post
 
 		for j := 0; j < numberOfComments; j++ {
 			comment := Comment{
