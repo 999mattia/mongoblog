@@ -21,7 +21,12 @@ function App() {
 	return (
 		<>
 			<center>
-				<button onClick={() => navigate("/create")}>Create Post</button>
+				<button
+					className="btn"
+					onClick={() => navigate("/create")}
+				>
+					Create Post
+				</button>
 			</center>
 			<div className="postsContainer">
 				{posts.map((post) => {
