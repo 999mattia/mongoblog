@@ -2,7 +2,6 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Post } from "./utils/types";
 import { getPostById, deleteComment } from "./utils/fetch";
-import { useNavigate } from "react-router-dom";
 
 export default function Details() {
 	const { id } = useParams();
