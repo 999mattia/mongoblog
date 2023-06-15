@@ -29,56 +29,32 @@ export default function Create() {
 	}
 
 	return (
-		<div className="input-group mb-3">
-			<span
-				className="input-group-text"
-				id="basic-addon1"
-			>
-				Title
-			</span>
+		<div>
+			<span>Title</span>
 			<input
 				type="text"
-				className="form-control"
 				placeholder="Enter your title..."
 				name="title"
 				value={post.title}
 				onChange={handleChange}
 			/>
-			<span
-				className="input-group-text"
-				id="basic-addon1"
-			>
-				Content
-			</span>
+			<span>Content</span>
 			<input
 				type="text"
-				className="form-control"
 				placeholder="Enter your content..."
 				name="content"
 				value={post.content}
 				onChange={handleChange}
 			/>
-			<span
-				className="input-group-text"
-				id="basic-addon1"
-			>
-				Author
-			</span>
+			<span>Author</span>
 			<input
 				type="text"
-				className="form-control"
 				placeholder="Enter your username..."
 				name="author"
 				value={post.author}
 				onChange={handleChange}
 			/>
-			<button
-				type="submit"
-				className="btn btn-primary"
-				onClick={handleSubmit}
-			>
-				Submit
-			</button>
+			<button onClick={handleSubmit}>Submit</button>
 		</div>
 	);
 }

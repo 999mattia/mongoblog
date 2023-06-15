@@ -22,10 +22,10 @@ export default function Details() {
 			<p>{post?.content}</p>
 			{post?.comments.map((comment) => {
 				return (
-					<>
+					<div key={comment.id}>
 						<h3>{comment.text}</h3>
 						<h4>{comment.author}</h4>
-					</>
+					</div>
 				);
 			})}
 		</>

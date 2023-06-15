@@ -5,8 +5,7 @@ import Create from "./Create.tsx";
 import Details from "./Details.tsx";
 import Edit from "./Edit.tsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap/dist/js/bootstrap.bundle.min";
+import "./main.css";
 
 const router = createBrowserRouter([
 	{

@@ -18,13 +18,9 @@ function App() {
 
 	return (
 		<>
-			<button
-				type="button"
-				className="btn btn-primary"
-				onClick={() => navigate("/create")}
-			>
-				Create Post
-			</button>
+			<center>
+				<button onClick={() => navigate("/create")}>Create Post</button>
+			</center>
 			{posts.map((post) => {
 				return (
 					<PostCard
