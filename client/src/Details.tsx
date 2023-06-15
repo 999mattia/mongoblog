@@ -5,11 +5,8 @@ import { getPostById, deleteComment } from "./utils/fetch";
 import { useNavigate } from "react-router-dom";
 
 export default function Details() {
-	const navigate = useNavigate();
 	const { id } = useParams();
 	const [post, setPost] = useState<Post | null>(null);
-
-	const url = `/posts/${id}`;
 
 	useEffect(() => {
 		load();
