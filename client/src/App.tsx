@@ -3,6 +3,7 @@ import { getAllPosts } from "./utils/fetch";
 import { Post } from "./utils/types";
 import PostCard from "./components/PostCard";
 import { useNavigate } from "react-router-dom";
+import "./App.css";
 
 function App() {
 	const navigate = useNavigate();
@@ -22,15 +23,17 @@ function App() {
 			<center>
 				<button onClick={() => navigate("/create")}>Create Post</button>
 			</center>
-			{posts.map((post) => {
-				return (
-					<PostCard
-						post={post}
-						load={load}
-						key={post.id}
-					></PostCard>
-				);
-			})}
+			<div className="postsContainer">
+				{posts.map((post) => {
+					return (
+						<PostCard
+							post={post}
+							load={load}
+							key={post.id}
+						></PostCard>
+					);
+				})}
+			</div>
 		</>
 	);
 }
