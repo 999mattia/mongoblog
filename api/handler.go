@@ -74,7 +74,7 @@ func UpdatePost(c *gin.Context) {
 	}
 
 	update := bson.M{
-		"$set": post,
+		"$set": bson.M{"title": post.Title, "author": post.Author, "content": post.Content},
 	}
 
 	result, err := PostsCollection.UpdateOne(context.Background(), filter, update)

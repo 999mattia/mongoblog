@@ -25,3 +25,11 @@ export async function deletePost(id: string): Promise<void> {
 		method: "DELETE",
 	});
 }
+
+export async function updatePost(post: Post): Promise<void> {
+	await fetch(`https://mongoblog-api.onrender.com/posts/${post.id}`, {
+		method: "PATCH",
+		headers: { "Content-Type": "application/json" },
+		body: JSON.stringify(post),
+	});
+}
