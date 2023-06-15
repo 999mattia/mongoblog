@@ -1,4 +1,4 @@
-import { Post } from "./types";
+import { Post, Comment } from "./types";
 
 export async function getAllPosts(): Promise<Post[]> {
 	const response = await fetch("https://mongoblog-api.onrender.com/posts");
@@ -31,5 +31,16 @@ export async function updatePost(post: Post): Promise<void> {
 		method: "PATCH",
 		headers: { "Content-Type": "application/json" },
 		body: JSON.stringify(post),
+	});
+}
+
+export async function createComment(
+	id: string,
+	comment: Comment
+): Promise<void> {
+	await fetch(`https://mongoblog-api.onrender.com/posts/${id}/comments`, {
+		method: "POST",
+		headers: { "Content-Type": "application/json" },
+		body: JSON.stringify(comment),
 	});
 }
