@@ -25,19 +25,17 @@ func InitDB() {
 }
 
 
-func CreateExamplePosts() {
-	numberOfPosts := 10 // Change this value to adjust the number of posts
+func CreateExamplePosts(amount int) {
+	
 
-	for i := 0; i < numberOfPosts; i++ {
+	for i := 0; i < amount; i++ {
 		post := Post{
 			Title:   fmt.Sprintf("Post %d", i+1),
 			Content: fmt.Sprintf("Content of Post %d", i+1),
 			Author:  fmt.Sprintf("Author %d", i+1),
 		}
 
-		numberOfComments := 10 // Change this value to adjust the number of comments per post
-
-		for j := 0; j < numberOfComments; j++ {
+		for j := 0; j < amount; j++ {
 			comment := Comment{
 				Text:   fmt.Sprintf("Comment %d of Post %d", j+1, i+1),
 				Author: fmt.Sprintf("Comment Author %d", j+1),

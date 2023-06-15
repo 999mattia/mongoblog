@@ -9,12 +9,13 @@ function App() {
 	const [posts, setPosts] = useState<Post[]>([]);
 
 	useEffect(() => {
-		async function fetch() {
-			const posts = await getAllPosts();
-			setPosts(posts);
-		}
-		fetch();
+		load();
 	}, []);
+
+	async function load() {
+		const posts = await getAllPosts();
+		setPosts(posts);
+	}
 
 	return (
 		<>
@@ -25,6 +26,7 @@ function App() {
 				return (
 					<PostCard
 						post={post}
+						load={load}
 						key={post.id}
 					></PostCard>
 				);

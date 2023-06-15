@@ -44,3 +44,15 @@ export async function createComment(
 		body: JSON.stringify(comment),
 	});
 }
+
+export async function deleteComment(
+	postId: string,
+	commentId: string
+): Promise<void> {
+	await fetch(
+		`https://mongoblog-api.onrender.com/posts/${postId}/comments/${commentId}`,
+		{
+			method: "DELETE",
+		}
+	);
+}

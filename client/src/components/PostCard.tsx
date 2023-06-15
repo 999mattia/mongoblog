@@ -11,12 +11,14 @@ export default function PostCard(props: any) {
 				<p>{props.post.content}</p>
 				<a href={detailLink}>Read more</a>
 				<a href={editLink}>Edit</a>
-				<a
-					href="/"
-					onClick={() => deletePost(props.post.id)}
+				<button
+					onClick={async () => {
+						await deletePost(props.post.id);
+						await props.load();
+					}}
 				>
 					Delete
-				</a>
+				</button>
 			</div>
 		</div>
 	);
