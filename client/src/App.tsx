@@ -16,10 +16,6 @@ function App() {
 		fetch();
 	}, []);
 
-	useEffect(() => {
-		console.log(posts);
-	}, [posts]);
-
 	return (
 		<>
 			<button
@@ -30,7 +26,12 @@ function App() {
 				Create Post
 			</button>
 			{posts.map((post) => {
-				return <PostCard post={post}></PostCard>;
+				return (
+					<PostCard
+						post={post}
+						key={post.id}
+					></PostCard>
+				);
 			})}
 		</>
 	);

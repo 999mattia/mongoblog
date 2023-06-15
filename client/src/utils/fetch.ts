@@ -19,3 +19,9 @@ export async function createPost(post: Post): Promise<void> {
 		body: JSON.stringify(post),
 	});
 }
+
+export async function deletePost(id: string): Promise<void> {
+	await fetch(`https://mongoblog-api.onrender.com/posts/${id}`, {
+		method: "DELETE",
+	});
+}

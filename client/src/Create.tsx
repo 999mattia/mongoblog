@@ -21,7 +21,6 @@ export default function Create() {
 			...post,
 			[name]: value,
 		});
-		console.log(post);
 	};
 
 	async function handleSubmit() {

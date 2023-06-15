@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import App from "./App.tsx";
 import Create from "./Create.tsx";
 import Details from "./Details.tsx";
+import Edit from "./Edit.tsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
 	{
 		path: "/posts/:id",
 		element: <Details />,
+	},
+	{
+		path: "/posts/:id/edit",
+		element: <Edit />,
 	},
 ]);
 

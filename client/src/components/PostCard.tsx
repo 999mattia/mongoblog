@@ -1,5 +1,8 @@
+import { deletePost } from "../utils/fetch";
+
 export default function PostCard(props: any) {
-	let link = "/posts/" + props.post.id;
+	let detailLink = "/posts/" + props.post.id;
+	let editLink = "/posts/" + props.post.id + "/edit";
 	return (
 		<div className="card">
 			<div className="card-body">
@@ -9,16 +12,23 @@ export default function PostCard(props: any) {
 				</h6>
 				<p className="card-text">{props.post.content}</p>
 				<a
-					href={link}
+					href={detailLink}
 					className="card-link"
 				>
 					Read more
 				</a>
 				<a
-					href="#"
+					href={editLink}
 					className="card-link"
 				>
 					Edit
+				</a>
+				<a
+					href="/"
+					onClick={() => deletePost(props.post.id)}
+					className="card-link"
+				>
+					Delete
 				</a>
 			</div>
 		</div>
