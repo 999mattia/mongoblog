@@ -5,12 +5,15 @@ import "./PostCard.css";
 export default function PostCard(props: any) {
 	const navigate = useNavigate();
 	return (
-		<center
-			className="container"
-			onClick={() => navigate(`/posts/${props.post.id}`)}
-		>
+		<center className="container">
 			<h5>{props.post.title}</h5>
 			<h6>{props.post.author}</h6>
+			<button
+				className="btn"
+				onClick={() => navigate(`/posts/${props.post.id}`)}
+			>
+				Read
+			</button>
 			<button
 				className="btn"
 				onClick={() => navigate(`/posts/${props.post.id}/edit`)}
