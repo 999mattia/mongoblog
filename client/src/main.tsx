@@ -5,6 +5,7 @@ import Create from "./Create.tsx";
 import Details from "./Details.tsx";
 import Edit from "./Edit.tsx";
 import CreateComment from "./CreateComment.tsx";
+import EditComment from "./EditComment.tsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./main.css";
 
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
 	{
 		path: "/posts/:id/comments/create",
 		element: <CreateComment />,
+	},
+	{
+		path: "/posts/:id/comments/:commentId/edit",
+		element: <EditComment />,
 	},
 ]);
 

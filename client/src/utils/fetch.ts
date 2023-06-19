@@ -56,3 +56,28 @@ export async function deleteComment(
 		}
 	);
 }
+
+export async function getComment(
+	postId: string,
+	commentId: string
+): Promise<Comment> {
+	const response = await fetch(
+		`https://mongoblog-api.onrender.com/posts/${postId}/comments/${commentId}`
+	);
+	return response.json();
+}
+
+export async function updateComment(
+	postId: string,
+	commentId: string,
+	comment: Comment
+) {
+	await fetch(
+		`https://mongoblog-api.onrender.com/posts/${postId}/comments/${commentId}`,
+		{
+			method: "PATCH",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify(comment),
+		}
+	);
+}

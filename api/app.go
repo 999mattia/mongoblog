@@ -36,6 +36,7 @@ func main() {
 
 	r.GET("/posts/:id/comments/:commentID", GetCommentByID)
 	r.POST("/posts/:id/comments", CreateComment)
+	r.PATCH("/posts/:id/comments/:commentID", UpdateComment)
 	r.DELETE("/posts/:id/comments/:commentID", DeleteComment)
 
 	r.Run()

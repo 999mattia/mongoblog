@@ -41,6 +41,19 @@ export default function Details() {
 						<h3>{comment.text}</h3>
 						<h4>{comment.author}</h4>
 						<button
+							onClick={async () => {
+								navigate(
+									"/posts/" +
+										id +
+										"/comments/" +
+										comment.id +
+										"/edit"
+								);
+							}}
+						>
+							Edit
+						</button>
+						<button
 							onClick={async () =>
 								await handleDeleteComment(comment.id)
 							}
