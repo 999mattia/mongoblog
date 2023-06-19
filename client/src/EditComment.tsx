@@ -2,8 +2,10 @@ import React, { useEffect, useState } from "react";
 import { getComment, updateComment } from "./utils/fetch";
 import { useParams } from "react-router-dom";
 import { Comment } from "./utils/types";
+import { useNavigate } from "react-router-dom";
 
 export default function EditComment() {
+	const navigate = useNavigate();
 	const params = useParams();
 	const [comment, setComment] = useState<Comment>({
 		id: "",
@@ -31,6 +33,7 @@ export default function EditComment() {
 
 	async function handleSubmit() {
 		await updateComment(params.id!, params.commentId!, comment);
+		navigate("/posts/" + params.id);
 	}
 
 	return (

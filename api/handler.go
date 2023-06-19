@@ -175,12 +175,12 @@ func UpdateComment(c *gin.Context) {
 	}
 
 	var comments []Comment
-	for _, comment := range post.Comments {
-		if comment.CommentID == commentID {
-			comment.Text = comment.Text
-			comment.Author = comment.Author
+	for _, oldComment := range post.Comments {
+		if oldComment.ID == commentID {
+			oldComment.Text = comment.Text
+			oldComment.Author = comment.Author
 		}
-		comments = append(comments, comment)
+		comments = append(comments, oldComment)
 	}
 
 	update := bson.M{
