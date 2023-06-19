@@ -24,21 +24,19 @@ func InitDB() {
 	PostsCollection = Client.Database("mongoblog").Collection("posts")
 }
 
-
 func CreateExamplePosts(amount int) {
-	
 
 	for i := 0; i < amount; i++ {
 		post := Post{
 			Title:   fmt.Sprintf("Post %d", i+1),
-			Content: fmt.Sprintf("Content of Post %d", i+1),
+			Content: fmt.Sprintf("Content %d", i+1),
 			Author:  fmt.Sprintf("Author %d", i+1),
 		}
 
 		for j := 0; j < amount; j++ {
 			comment := Comment{
-				Text:   fmt.Sprintf("Comment %d of Post %d", j+1, i+1),
-				Author: fmt.Sprintf("Comment Author %d", j+1),
+				Text:      fmt.Sprintf("Comment %d", j+1),
+				Author:    fmt.Sprintf("Comment Author %d", j+1),
 				CommentID: primitive.NewObjectID().Hex(),
 			}
 			post.Comments = append(post.Comments, comment)

@@ -16,7 +16,7 @@ func main() {
 	InitDB()
 
 	//CleanDB()
-	//CreateExamplePosts(100)
+	//CreateExamplePosts(50)
 
 	r := gin.Default()
 
