@@ -7,14 +7,3 @@
 	width: 15rem;
 	cursor: pointer;
 }
-
-.btn {
-	background: transparent;
-	padding: 0.5rem;
-	border-radius: 15px;
-	border: 3.5px solid #0049b0;
-	font-size: 0.75rem;
-	cursor: pointer;
-	margin-left: 0.5rem;
-	margin-right: 0.5rem;
-}

@@ -2,9 +2,11 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Post } from "./utils/types";
 import { getPostById, deleteComment } from "./utils/fetch";
+import { useNavigate } from "react-router-dom";
 
 export default function Details() {
 	const { id } = useParams();
+	const navigate = useNavigate();
 	const [post, setPost] = useState<Post | null>(null);
 
 	useEffect(() => {
@@ -17,9 +19,7 @@ export default function Details() {
 	}
 
 	async function handleDeleteComment(commentId: string) {
-		console.log(1);
 		await deleteComment(id!, commentId);
-		console.log(2);
 		await load();
 	}
 
@@ -28,6 +28,12 @@ export default function Details() {
 			<h1>{post?.title}</h1>
 			<h2>{post?.author}</h2>
 			<p>{post?.content}</p>
+
+			<button
+				onClick={() => navigate("/posts/" + id + "/comments/create")}
+			>
+				Create Comment
+			</button>
 
 			{post?.comments?.map((comment) => {
 				return (

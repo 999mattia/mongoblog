@@ -8,20 +8,13 @@ export default function PostCard(props: any) {
 		<center className="container">
 			<h5>{props.post.title}</h5>
 			<h6>{props.post.author}</h6>
-			<button
-				className="btn"
-				onClick={() => navigate(`/posts/${props.post.id}`)}
-			>
+			<button onClick={() => navigate(`/posts/${props.post.id}`)}>
 				Read
 			</button>
-			<button
-				className="btn"
-				onClick={() => navigate(`/posts/${props.post.id}/edit`)}
-			>
+			<button onClick={() => navigate(`/posts/${props.post.id}/edit`)}>
 				Edit
 			</button>
 			<button
-				className="btn"
 				onClick={async () => {
 					await deletePost(props.post.id);
 					await props.load();
