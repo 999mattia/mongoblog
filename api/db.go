@@ -2,9 +2,7 @@ package main
 
 import (
 	"context"
-	"encoding/json"
 	"fmt"
-	"io/ioutil"
 	"log"
 	"os"
 
@@ -61,26 +59,4 @@ func CleanDB() {
 	}
 
 	fmt.Println("Database cleaned successfully!")
-}
-
-func LoadMockData() {
-	data, err := ioutil.ReadFile("mock.json")
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	var posts []Post
-	err = json.Unmarshal(data, &posts)
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	for _, post := range posts {
-		_, err := PostsCollection.InsertOne(context.Background(), post)
-		if err != nil {
-			log.Fatal(err)
-		}
-	}
-
-	fmt.Println("Mock data loaded successfully!")
 }

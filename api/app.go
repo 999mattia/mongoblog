@@ -17,7 +17,6 @@ func main() {
 
 	//CleanDB()
 	//CreateExamplePosts(50)
-	//LoadMockData()
 
 	r := gin.Default()
 
