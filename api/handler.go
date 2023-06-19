@@ -176,7 +176,7 @@ func UpdateComment(c *gin.Context) {
 
 	var comments []Comment
 	for _, oldComment := range post.Comments {
-		if oldComment.ID == commentID {
+		if oldComment.CommentID == commentID {
 			oldComment.Text = comment.Text
 			oldComment.Author = comment.Author
 		}
