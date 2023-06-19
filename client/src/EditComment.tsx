@@ -5,7 +5,6 @@ import { useParams } from "react-router-dom";
 import { Comment } from "./utils/types";
 
 export default function EditComment() {
-	const navigate = useNavigate();
 	const params = useParams();
 	const [comment, setComment] = useState<Comment>({
 		id: "",
