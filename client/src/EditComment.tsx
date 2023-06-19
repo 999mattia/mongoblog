@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { getComment, updateComment } from "./utils/fetch";
-import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { Comment } from "./utils/types";
 
@@ -13,7 +12,6 @@ export default function EditComment() {
 	});
 
 	async function load() {
-		console.log(params.id, params.commentId);
 		setComment(await getComment(params.id!, params.commentId!));
 	}
 
