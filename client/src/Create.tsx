@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Post } from "./utils/types";
 import { createPost } from "./utils/fetch";
 import { useNavigate } from "react-router-dom";
+import "./Create.css"
 
 export default function Create() {
 	const navigate = useNavigate();
@@ -61,47 +62,59 @@ export default function Create() {
 	}
 
 	return (
-		<div>
-			<span>Title</span>
-			<input
-				type="text"
-				placeholder="Enter your title..."
-				name="title"
-				value={post.title}
-				onChange={handleChange}
-			/>
-			<span>Content</span>
-			<input
-				type="text"
-				placeholder="Enter your content..."
-				name="content"
-				value={post.content}
-				onChange={handleChange}
-			/>
-			<span>Author</span>
-			<input
-				type="text"
-				placeholder="Enter your username..."
-				name="author"
-				value={post.author}
-				onChange={handleChange}
-			/>
-			<span>Additional Info</span>
-			<input
-				type="text"
-				placeholder=""
-				name="author"
-				value={additionalName}
-				onChange={handleAdditionalNameChange}
-			/>
-			<input
-				type="text"
-				placeholder=""
-				name="author"
-				value={additionalValue}
-				onChange={handleAdditionalvalueChange}
-			/>
-			<button onClick={handleSubmit}>Submit</button>
-		</div>
+		<section className="containerCreateForm">
+			<div>
+				<span>Title:</span>
+				<input
+					type="text"
+					placeholder="Enter your title..."
+					name="title"
+					value={post.title}
+					onChange={handleChange}
+				/>
+			</div>
+
+			<div>
+				<span>Content:</span>
+				<input
+					type="text"
+					placeholder="Enter your content..."
+					name="content"
+					value={post.content}
+					onChange={handleChange}
+				/>
+			</div>
+
+			<div>
+				<span>Author:</span>
+				<input
+					type="text"
+					placeholder="Enter your username..."
+					name="author"
+					value={post.author}
+					onChange={handleChange}
+				/>
+			</div>
+			
+			<div>
+				<span>Additional Info</span><br/>
+				<input
+					type="text"
+					placeholder=""
+					name="author"
+					value={additionalName}
+					onChange={handleAdditionalNameChange}
+				/>
+				<input
+					type="text"
+					placeholder=""
+					name="author"
+					value={additionalValue}
+					onChange={handleAdditionalvalueChange}
+				/>
+			</div>
+			
+			<button className="buttonForm" onClick={handleSubmit}>Submit</button>
+		</section>
 	);
 }

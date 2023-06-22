@@ -1,0 +1,16 @@
+.containerCreateForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    height: 20em;
+    align-items: center;
+}
+
+.buttonForm {
+    background-color: bisque;
+    width: 10em;
+    padding: 1em 3em 1em 3em;
+    border: 1px solid gray;
+    border-radius: 5px;
+}

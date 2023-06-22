@@ -3,6 +3,7 @@ import { createComment } from "./utils/fetch";
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { Comment } from "./utils/types";
+import "./Create.css"
 
 export default function CreateComment() {
 	const navigate = useNavigate();
@@ -55,39 +56,48 @@ export default function CreateComment() {
 	}
 
 	return (
-		<div>
-			<span>Text</span>
-			<input
-				type="text"
-				placeholder="Enter your text..."
-				name="text"
-				value={comment.text}
-				onChange={handleChange}
-			/>
-			<span>Author</span>
-			<input
-				type="text"
-				placeholder="Enter your username..."
-				name="author"
-				value={comment.author}
-				onChange={handleChange}
-			/>{" "}
-			<span>Additional Info</span>
-			<input
-				type="text"
-				placeholder=""
-				name="author"
-				value={additionalName}
-				onChange={handleAdditionalNameChange}
-			/>
-			<input
-				type="text"
-				placeholder=""
-				name="author"
-				value={additionalValue}
-				onChange={handleAdditionalvalueChange}
-			/>
-			<button onClick={handleSubmit}>Submit</button>
+		<div className="containerCreateForm">
+			<div>
+				<span>Text</span>
+				<input
+					type="text"
+					placeholder="Enter your text..."
+					name="text"
+					value={comment.text}
+					onChange={handleChange}
+				/>
+			</div>
+			
+			<div>
+				<span>Author</span>
+				<input
+					type="text"
+					placeholder="Enter your username..."
+					name="author"
+					value={comment.author}
+					onChange={handleChange}
+				/>{" "}
+			</div>
+			
+			<div>
+				<span>Additional Info</span><br/>
+				<input
+					type="text"
+					placeholder=""
+					name="author"
+					value={additionalName}
+					onChange={handleAdditionalNameChange}
+				/>
+				<input
+					type="text"
+					placeholder=""
+					name="author"
+					value={additionalValue}
+					onChange={handleAdditionalvalueChange}
+				/>
+			</div>
+			
+			<button className="buttonForm" onClick={handleSubmit}>Submit</button>
 		</div>
 	);
 }
