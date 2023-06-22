@@ -8,6 +8,7 @@ import CreateComment from "./CreateComment.tsx";
 import EditComment from "./EditComment.tsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./main.css";
+import Header from "./components/Header.tsx";
 
 const router = createBrowserRouter([
 	{
@@ -38,6 +39,7 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
 	<React.StrictMode>
+		<Header/>
 		<RouterProvider router={router} />
 	</React.StrictMode>
 );

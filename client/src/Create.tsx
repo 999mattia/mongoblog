@@ -50,8 +50,14 @@ export default function Create() {
 	};
 
 	async function handleSubmit() {
-		await createPost(post);
-		navigate("/");
+		if (post.author === "" || post.title === "" || post.content === ""){
+			alert("Please fill out all fields!")
+			return;
+		}
+		else {
+			await createPost(post);
+			navigate("/");
+		}
 	}
 
 	return (

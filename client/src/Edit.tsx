@@ -37,8 +37,14 @@ export default function Edit() {
 	};
 
 	async function handleSubmit() {
-		await updatePost(post);
-		navigate("/posts/" + id);
+		if (post.author === "" || post.title === "" || post.content === ""){
+			alert("Please fill out all fields!")
+			return;
+		}
+		else {
+			await updatePost(post);
+			navigate("/posts/" + id);
+		}
 	}
 
 	return (
