@@ -28,6 +28,7 @@ export default function Details() {
 			<h1>{post?.title}</h1>
 			<h2>{post?.author}</h2>
 			<p>{post?.content}</p>
+			<p>{post?.additional}</p>
 
 			<button
 				onClick={() => navigate("/posts/" + id + "/comments/create")}
