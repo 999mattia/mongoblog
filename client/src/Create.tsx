@@ -12,6 +12,8 @@ export default function Create() {
 		author: "",
 		comments: [],
 	});
+	const [additionalName, setAdditionalName] = useState<string>("");
+	const [additionalValue, setAdditionalValue] = useState<string>("");
 
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const target = e.target;
@@ -20,6 +22,30 @@ export default function Create() {
 		setPost({
 			...post,
 			[name]: value,
+		});
+	};
+
+	const handleAdditionalNameChange = (
+		e: React.ChangeEvent<HTMLInputElement>
+	) => {
+		const target = e.target;
+		const value = target.value;
+		setAdditionalName(value);
+		setPost({
+			...post,
+			additional: additionalName + ":" + additionalValue,
+		});
+	};
+
+	const handleAdditionalvalueChange = (
+		e: React.ChangeEvent<HTMLInputElement>
+	) => {
+		const target = e.target;
+		const value = target.value;
+		setAdditionalValue(value);
+		setPost({
+			...post,
+			additional: additionalName + ":" + additionalValue,
 		});
 	};
 
@@ -53,6 +79,21 @@ export default function Create() {
 				name="author"
 				value={post.author}
 				onChange={handleChange}
+			/>
+			<span>Additional Info</span>
+			<input
+				type="text"
+				placeholder=""
+				name="author"
+				value={additionalName}
+				onChange={handleAdditionalNameChange}
+			/>
+			<input
+				type="text"
+				placeholder=""
+				name="author"
+				value={additionalValue}
+				onChange={handleAdditionalvalueChange}
 			/>
 			<button onClick={handleSubmit}>Submit</button>
 		</div>
