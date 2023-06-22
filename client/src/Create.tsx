@@ -33,7 +33,7 @@ export default function Create() {
 		setAdditionalName(value);
 		setPost({
 			...post,
-			additional: additionalName + ":" + additionalValue,
+			additional: additionalName + ": " + additionalValue,
 		});
 	};
 
@@ -45,7 +45,7 @@ export default function Create() {
 		setAdditionalValue(value);
 		setPost({
 			...post,
-			additional: additionalName + ":" + additionalValue,
+			additional: additionalName + ": " + additionalValue,
 		});
 	};
 
