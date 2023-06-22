@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { getAllPosts } from "./utils/fetch";
 import { Post } from "./utils/types";
 import PostCard from "./components/PostCard";
+import Header from "./components/Header";
 import { useNavigate } from "react-router-dom";
 import "./App.css";
 
@@ -20,6 +21,7 @@ function App() {
 
 	return (
 		<>
+			<Header/>
 			<center>
 				<button
 					className="btn"
