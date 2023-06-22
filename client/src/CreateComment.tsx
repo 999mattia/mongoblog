@@ -12,6 +12,8 @@ export default function CreateComment() {
 		author: "",
 		text: "",
 	});
+	const [additionalName, setAdditionalName] = useState<string>("");
+	const [additionalValue, setAdditionalValue] = useState<string>("");
 
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const target = e.target;
@@ -20,6 +22,30 @@ export default function CreateComment() {
 		setComment({
 			...comment,
 			[name]: value,
+		});
+	};
+
+	const handleAdditionalNameChange = (
+		e: React.ChangeEvent<HTMLInputElement>
+	) => {
+		const target = e.target;
+		const value = target.value;
+		setAdditionalName(value);
+		setComment({
+			...comment,
+			additional: additionalName + ": " + additionalValue,
+		});
+	};
+
+	const handleAdditionalvalueChange = (
+		e: React.ChangeEvent<HTMLInputElement>
+	) => {
+		const target = e.target;
+		const value = target.value;
+		setAdditionalValue(value);
+		setComment({
+			...comment,
+			additional: additionalName + ": " + additionalValue,
 		});
 	};
 
@@ -45,6 +71,21 @@ export default function CreateComment() {
 				name="author"
 				value={comment.author}
 				onChange={handleChange}
+			/>{" "}
+			<span>Additional Info</span>
+			<input
+				type="text"
+				placeholder=""
+				name="author"
+				value={additionalName}
+				onChange={handleAdditionalNameChange}
+			/>
+			<input
+				type="text"
+				placeholder=""
+				name="author"
+				value={additionalValue}
+				onChange={handleAdditionalvalueChange}
 			/>
 			<button onClick={handleSubmit}>Submit</button>
 		</div>
