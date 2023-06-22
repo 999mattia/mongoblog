@@ -6,6 +6,7 @@ import Details from "./Details.tsx";
 import Edit from "./Edit.tsx";
 import CreateComment from "./CreateComment.tsx";
 import EditComment from "./EditComment.tsx";
+import CommentDetails from "./CommentDetails.tsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./main.css";
 import Header from "./components/Header.tsx";
@@ -35,11 +36,15 @@ const router = createBrowserRouter([
 		path: "/posts/:id/comments/:commentId/edit",
 		element: <EditComment />,
 	},
+	{
+		path: "/posts/:id/comments/:commentId",
+		element: <CommentDetails />,
+	},
 ]);
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
 	<React.StrictMode>
-		<Header/>
+		<Header />
 		<RouterProvider router={router} />
 	</React.StrictMode>
 );

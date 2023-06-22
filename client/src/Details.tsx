@@ -42,6 +42,15 @@ export default function Details() {
 						<h3>{comment.text}</h3>
 						<h4>{comment.author}</h4>
 						<button
+							onClick={() =>
+								navigate(
+									"/posts/" + id + "/comments/" + comment.id
+								)
+							}
+						>
+							Read
+						</button>
+						<button
 							onClick={async () => {
 								navigate(
 									"/posts/" +
